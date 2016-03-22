@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quindar</title>
+
+  <!-- Global stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900">
+    <link type="text/css" rel="stylesheet" href="css/icons/icomoon/styles.css">
+    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.css"> -->
+    <link type="text/css" rel="stylesheet" href="css/core.css">
+    <link type="text/css" rel="stylesheet" href="css/components.css">
+    <link type="text/css" rel="stylesheet" href="css/colors.css">
+  <!-- /global stylesheets -->
+
+  <!-- Core JS files -->
+    <script type="text/javascript" src="js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- // <script type="text/javascript" src="js/core/libraries/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="js/plugins/loaders/blockui.min.js"></script>
+  <!-- /core JS files -->
+
+  <!-- Theme JS files -->
+    <!-- this echarts.js conflicts with gridstack.js 
+    <script type="text/javascript" src="assets/js/plugins/visualization/echarts/echarts.js"></script>
+    -->
+    <script type="text/javascript" src="js/core/app.js"></script> 
+  <!-- /theme JS files -->
+
+    <script type="text/javascript" src="js/plugins/visualization/d3/d3.min.js"></script>
+    <script type="text/javascript" src="js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/styling/switchery.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script type="text/javascript" src="js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="js/plugins/pickers/daterangepicker.js"></script>
+
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+
+  <!-- WebCam -->
+   <!-- <link rel="stylesheet" href="css/webcam.css"/>
+    <script src="js/webcam.js"></script>
+  <!-- /WebCam -->
+
+  <!-- world map -->
+    <script type="text/javascript" src="js/plugins/maps/jvectormap/jvectormap.min.js"></script>
+    <script type="text/javascript" src="js/plugins/maps/jvectormap/map_files/world.js"></script>
+    <script type="text/javascript" src="js/plugins/maps/jvectormap/map_files/countries/usa.js"></script>
+    <script type="text/javascript" src="js/plugins/maps/jvectormap/map_files/countries/germany.js"></script>
+    <script type="text/javascript" src="assets/demo_data/maps/vector/gdp_demo_data.js"></script>
+    <script type="text/javascript" src="js/maps/vector/vector_maps_demo.js"></script>
+  <!-- /world map -->
+
+  <!-- grid stack -->
+    <link rel="stylesheet" href="css/grid/gridstack.css"/>
+    <link rel="stylesheet" href="css/grid/gridstack-extra.css"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="js/grid/gridstack.js"></script>
+    <script type="text/javascript" src="js/grid/myresponsive.js"></script>
+
+    <style type="text/css">
+      .grid-stack {
+        background: white;
+      }
+
+      .grid-stack-item-content {
+        color: #2c3e50;
+        text-align: center;
+        background-color: white;
+      }
+    </style>
+  <!-- /grid stack -->
+
+</head>
+
+<body>
+  <!-- Main navbar -->
+  <div class="navbar navbar-default header-highlight">
+
+    <!-- Navbar header -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logos/audacy_logo.svg" alt="" style="width: 60px; height: 35px;">
+      </a>
+      <ul class="nav navbar-nav visible-xs-block">
+        <li>
+          <a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a>
+        </li>
+        <li>
+          <a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a>
+        </li>
+      </ul>
+    </div>
+    <!-- /Navbar header -->
+
+    <!-- Navbar menus -->
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+      <!-- Navbar icons -->
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="sidebar-control sidebar-main-toggle hidden-xs">
+            <i class="icon-paragraph-justify3"></i>
+          </a>
+        </li>
+      </ul>
+      <p class="navbar-text">
+        <span class="label bg-success">Online</span>
+      </p>
+      <!-- /Navbar icons -->
+
+      <ul class="nav navbar-nav navbar-right">
+        
+        <!-- Language dropdown -->
+        <li class="dropdown language-switch">
+          <a class="dropdown-toggle" data-toggle="dropdown"> 
+            <img src="assets/images/flags/us.png" class="position-left" alt=""> English 
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="deutsch"><img src="assets/images/flags/de.png" alt=""> Deutsch </a></li>
+            <li><a class="chinese"><img src="assets/images/flags/cn.png" alt=""> 中文 </a></li>
+            <li><a class="japanese"><img src="assets/images/flags/jp.png" alt=""> 日本語 </a></li>
+            <li><a class="english"><img src="assets/images/flags/us.png" alt=""> English </a></li>
+            <li><a class="espana"><img src="assets/images/flags/es.png" alt=""> España </a></li>
+            <li><a class="russian"><img src="assets/images/flags/ru.png" alt=""> Русский </a></li>
+          </ul>
+        </li>
+        <!-- /Language dropdown -->
+
+        <!-- Messages dropdown -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+            <i class="icon-bubbles4"></i> 
+            <span class="visible-xs-inline-block position-right">Messages</span> 
+            <span class="badge bg-warning-400">3</span>
+          </a>
+          <div class="dropdown-menu dropdown-content width-350">
+            <div class="dropdown-content-heading">
+              Messages
+              <ul class="icons-list">
+                <li><a href="#"><i class="icon-compose"></i></a></li>
+              </ul>
+            </div>
+            <ul class="media-list dropdown-content-body">
+              <li class="media">
+                <div class="media-left">
+                  <img src="assets/images/people/james.jpg" class="img-circle img-sm" alt=""> 
+                  <span class="badge bg-danger-400 media-badge">5</span>
+                </div>
+
+                <div class="media-body">
+                  <a href="#" class="media-heading"> 
+                    <span class="text-semibold">James Spicer</span> 
+                    <span class="media-annotation pull-right">05:12</span>
+                  </a> 
+                  <span class="text-muted">We are about to launch our first satellite...</span>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img src="assets/images/misc/placeholder.jpg"
+                  class="img-circle img-sm" alt="">  
+                  <span class="badge bg-danger-400 media-badge">4</span>
+                </div>
+
+                <div class="media-body">
+                  <a href="#" class="media-heading"> <span
+                    class="text-semibold">Masaki Kakoi</span> <span
+                    class="media-annotation pull-right">05:07</span>
+                  </a>  
+                  <span class="text-muted">Everything's clear. We are good to go...</span>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img src="assets/images/misc/placeholder.jpg"
+                  class="img-circle img-sm" alt="">
+                </div>
+                <div class="media-body">
+                  <a href="#" class="media-heading"> 
+                    <span class="text-semibold">Masaki Kakoi</span> 
+                    <span class="media-annotation pull-right">05:07</span>
+                  </a> 
+                  <span class="text-muted">Everything's clear. We are good to go...</span>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left">
+                  <img src="assets/images/people/ellaine.jpg"
+                  class="img-circle img-sm" alt="">
+                </div>
+                <div class="media-body">
+                  <a href="#" class="media-heading"> 
+                    <span class="text-semibold">Ellaine Talle</span> 
+                    <span class="media-annotation pull-right">05:03</span>
+                  </a> 
+                  <span class="text-muted">The thruster is verified...</span>
+                </div>
+              </li>
+            </ul>
+            <div class="dropdown-content-footer">
+              <a href="#" data-popup="tooltip" title="All messages"><i
+              class="icon-menu display-block"></i></a>
+            </div>
+          </div>
+        </li>
+        <!-- /Messages dropdown -->
+
+        <!-- User dropdown -->
+        <li class="dropdown dropdown-user">
+          <a class="dropdown-toggle" data-toggle="dropdown">
+            <img src="assets/images/people/sam.jpg" alt="">
+            <span>Sam</span> <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#"><i class="icon-user-plus"></i> My profile </a></li>
+            <li><a href="#"><i class="icon-coins"></i> My balance </a></li>
+            <li><a href="#"><span class="badge bg-teal-400 pull-right">23</span> 
+              <i class="icon-comment-discussion"></i> Messages </a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-cog5"></i> Account settings </a></li>
+            <li><a href="#"><i class="icon-switch2"></i> Logout </a></li>
+          </ul>
+        </li>
+        <!-- /User dropdown -->
+
+      </ul>
+    </div>
+    <!-- /Navbar menus -->
+
+  </div>
+  <!-- /main navbar -->
+
+  <!-- Page container -->
+  <div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+      <!-- Main sidebar -->
+      <div class="sidebar sidebar-main">
+        <div class="sidebar-content">
+
+          <!-- User menu -->
+          <div class="sidebar-user">
+            <div class="category-content">
+              <div class="media">
+                <a href="#" class="media-left"><img
+                src="assets/images/people/sam.jpg" class="img-circle img-sm"
+                alt=""></a>
+                <div class="media-body">
+                  <span class="media-heading text-semibold">Sam</span>
+                  <div class="text-size-mini text-muted">
+                    <i class="icon-pin text-size-small"></i> &nbsp;Palo Alto, CA
+                  </div>
+                </div>
+                <div class="media-right media-middle">
+                  <ul class="icons-list">
+                    <li><a href="#"><i class="icon-cog3"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /User menu -->
+
+          <!-- Main navigation -->
+          <div class="sidebar-category sidebar-category-visible">
+            <div class="category-content no-padding">
+              <ul class="navigation navigation-main navigation-accordion">
+                <li class="navigation-header"><span>Main </span> 
+                 <i class="icon-menu" title="Main pages"></i></li>
+                <li class="active"><a href="index.html">
+                 <i class="icon-home4"></i> <span>My Dashboard </span></a></li>
+
+                <li>
+                  <a href="#"><i class="icon-cart"></i><span>Customer </span></a>
+                  <ul>
+                    <li><a href="buy.html">Buy </a></li>
+                    <li><a href="bid.html">Bid </a></li>
+                    <li><a href="analytics.html">Analytics </a></li>
+                    <li><a href="connect.html">AudacyConnect </a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#"><i class="icon-equalizer"></i> <span>Mission Operations </span></a>
+                  <ul>
+                    <li><a href="relay.html">Relay TT&C </a></li>
+                    <li><a href="ground.html">Ground Dish TT&C </a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#"><i class="icon-gear"></i><span>Systems Admin </span></a>
+                  <ul>
+                    <li><a href="monitoring.html">Monitoring </a></li>
+                    <li><a href="diagnostics.html">Diagnostics </a></li>
+                    <li><a href="userManagement.html">User Management </a></li>
+                    <li><a href="logs.html">Logs </a></li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <!-- /Main navigation -->
+
+        </div>
+      </div>
+      <!-- /Main sidebar -->
+
+      <!-- Main content -->
+      <div class="content-wrapper">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header-content">
+            <div class="page-title">
+              <h4><i class="position-left"></i> <span class="text-semibold">Dashboard </span></h4>
+            </div>
+            <div class="heading-elements">
+              <div class="heading-btn-group">
+<!--                 <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Analytics </span></a>
+                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Bills </span></a>
+                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule </span></a> -->
+                <button type="button" class="btn btn-primary" onclick="newWidget()">New Widget</button>
+                <a id="save-grid" class="btn btn-default" href="#">Save Grid</a>
+                <a id="load-grid" class="btn btn-default" href="#">Load Grid</a>
+                <a id="clear-grid" class="btn btn-default" href="#">Clear Grid</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page header -->
+
+        <!-- Content area -->
+        <div class="content">
+          <div class="col-md-12">
+            <div id="grid" class="grid-stack">
+
+              <!-- Widget 1 -->
+              <div id="g1" class="grid-stack-item" data-gs-x="0" data-gs-y="0"
+               data-gs-width="4" data-gs-height="3">
+              
+                <div id="i1" class="grid-stack-item-content">
+                  <!--<script type="text/javascript">
+                    var gridId = document.getElementById("i1").parent().getAttribute("id");
+                    alert(gridId);
+                  </script> -->
+                  <!-- Simple Bar Chart -->
+                  <div id="p1" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h5 class="panel-title">Simple bar chart</h5>
+                      <div class="heading-elements">
+                        <ul class="icons-list">
+                          <li><a data-action="collapse"></a></li>
+                          <li><a data-action="reload"></a></li>
+                          <li><a data-action="close" onclick="delWidget('#g1')"></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <div class="chart-container">
+                        <div class="chart">
+                          <div style="width: 40px;">4</div>
+                          <div style="width: 80px;">8</div>
+                          <div style="width: 150px;">15</div>
+                          <div style="width: 160px;">16</div>
+                          <div style="width: 230px;">23</div>
+                          <div style="width: 420px;">42</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Simple Bar Chart  -->
+
+                </div>
+              </div>
+              <!-- /Widget 1 -->
+
+              <!-- Widget 2 -->
+              <div id="g2" class="grid-stack-item" data-gs-x="9" data-gs-y="0"
+               data-gs-width="3" data-gs-height="4">
+                <div class="grid-stack-item-content">
+
+                  <!-- Live Communication -->
+                  <div id="p2" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h5 class="panel-title">Live Communication</h5>
+                      <div class="heading-elements">
+                        <ul class="icons-list">
+                          <li><a data-action="collapse"></a></li>
+                          <li><a data-action="reload"></a></li>
+                          <li><a data-action="close" onclick="delWidget('#g2')"></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <video height="200" id="player" autoplay="true"></video>
+                    </div>
+                  </div>
+                  <!-- /Live communication -->
+
+                </div>
+              </div>
+              <!-- /Widget 2 -->
+
+              <!-- Widget 3 -->
+              <div id="g3" class="grid-stack-item" data-gs-x="0" data-gs-y="4"
+               data-gs-width="4" data-gs-height="4">
+                <div class="grid-stack-item-content">
+
+                  <!-- Visitors location world map -->
+                  <div id="p3" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h5 class="panel-title">Visitors Location</h5>
+                      <div class="heading-elements">
+                        <ul class="icons-list">
+                          <li><a data-action="collapse"></a></li>
+                          <li><a data-action="reload"></a></li>
+                          <li><a data-action="close" onclick="delWidget('#g3')"></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <p class="content-group">Location of current customers across countries.</p>
+                      <div class="map-container map-world-markers">
+                        <div class="jvectormap-container" style="width: 100%; height: 100%; 
+                         position: relative; overflow: hidden; background-color:transparent;">
+                          <svg height="500" width="1070"></svg>
+                          <div class="jvectormap-zoomin">+</div>
+                          <div class="jvectormap-zoomout">-</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Visitors location world map -->
+
+                </div>
+              </div>
+              <!-- /Widget 3 -->
+
+            </div>
+          </div>
+        </div>
+        <!-- /content area -->
+
+      </div>
+      <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+  </div>
+  <!-- /page container -->
+
+    <script type="text/javascript">
+      
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+      };
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
+      };
+
+      function loadPage() {
+        var options = {
+          };
+        $('.grid-stack').gridstack(options);
+        this.grid = $('.grid-stack').data('gridstack');
+        var serializedData = getCookie("webPage");
+        alert(serializedData);
+        // this.grid.removeAll();
+        var items = GridStackUI.Utils.sort(serializedData);
+        _.each(items, function (node) {
+          this.grid.addWidget($('<div id='+node.id+' class="grid-stack-item"><div class="grid-stack-item-content">'+node.content+'</div></div>'),
+            node.x, node.y, node.width, node.height);
+        }, this);
+      };
+
+      // function checkCookie() {
+      //   var user = getCookie("username");
+      //   if (user != "") {
+      //       alert("Welcome again " + user);
+      //   } else {
+      //       user = prompt("Please enter your name:", "");
+      //       if (user != "" && user != null) {
+      //           setCookie("username", user, 365);
+      //       }
+      //   }
+      // }; 
+
+      function serialization() {
+        var options = {
+          };
+        $('.grid-stack').gridstack(options);
+        this.grid = $('.grid-stack').data('gridstack');
+
+        this.saveGrid = function () {
+          var gridStr = [];
+          this.serializedData = _.map($('.grid-stack .grid-stack-item:visible'), function (el) {
+            el = $(el);
+            var node = el.data('_gridstack_node');
+            return {
+              id: el.attr('id'),
+              x: node.x,
+              y: node.y,
+              width: node.width,
+              height: node.height,
+              content: $('.grid-stack-item-content', el).html()
+            };
+            gridStr.push(id);
+          }, this);
+          // var gridStr = [];
+          // for (i = 0; i < this.serializedData.length; i++) {
+          //   gridStr.push(this.serializedData.node.id[i]);
+          // }
+          // var gridStr = JSON.stringify(this.serializedData);
+          alert(JSON.stringify(gridStr));
+          setCookie("webPage", gridStr, 30);
+          alert(getCookie("webPage"));
+          $('#saved-data').val(gridStr);
+          return false;
+        }.bind(this);
+
+        this.loadGrid = function () {
+          this.grid.removeAll();
+          var items = GridStackUI.Utils.sort(this.serializedData);
+          _.each(items, function (node) {
+            this.grid.addWidget($('<div id='+node.id+' class="grid-stack-item"><div class="grid-stack-item-content">'+node.content+'</div></div>'),
+              node.x, node.y, node.width, node.height);
+          }, this);
+          return false;
+        }.bind(this);
+
+        this.clearGrid = function () {
+          this.grid.removeAll();
+          return false;
+        }.bind(this);
+
+        $('#save-grid').click(this.saveGrid);
+        $('#load-grid').click(this.loadGrid);
+        $('#clear-grid').click(this.clearGrid);
+
+        // this.loadGrid();
+      };
+      onload=serialization;
+      // onload=loadPage;
+    </script>
+
+    <script type="text/javascript">
+      function newWidget() {
+
+        this.grid = $('.grid-stack').data('gridstack');
+
+        this.newGrid = function () {
+          var items = GridStackUI.Utils.sort(this.serializedData);
+          // alert($('#g1').html());
+          this.grid.addWidget('<div class="grid-stack-item">' + $('#g1').html() + '</div>', 0, 0, 4, 4);
+
+          return false;
+       }.bind(this);
+
+       this.newGrid();
+       resizeGrid();
+      };
+    </script>
+
+    <script type="text/javascript">
+      function delWidget(id) {
+        var options = {
+          };
+        $('.grid-stack').gridstack(options);
+        this.grid = $('.grid-stack').data('gridstack');
+        this.grid.removeWidget($(id));
+      };
+    </script>
+  <script type="text/javascript">
+   // var xx = document.getElementById("grid");
+   // // alert(xx);
+   // var lengthXX = xx.childElementCount;
+   // // alert(lengthXX);
+   // // alert('Contents=' + xx.innerHTML + '   Number of children grids=' + lengthXX);
+   // for (var z = 0; z < lengthXX; z++) {
+   //    // alert('Children grid id=' + xx.children[z].getAttribute("Id"));
+   // }
+
+   // function setIdElement() {
+   //   var xx = document.getElementById("grid");
+   //   var lengthXX = xx.childElementCount;
+
+   //   // change all DIV id to H*
+   //   for (var z = 0; z < lengthXX; z++) {
+   //      xx.children[z].setAttribute("id", "H" + (z + 1));
+   //   }
+
+   //   // read them again to verify
+   //   for (var z = 0; z < lengthXX; z++) {
+   //      // alert('After: Children grid id=' + xx.children[z].getAttribute("Id"));
+   //   }
+   // }
+
+   // setIdElement();
+  </script>
+</body>
+</html>
